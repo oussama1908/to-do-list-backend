@@ -8,7 +8,7 @@ const cors=require('cors');
 dotenv.config({ path: './config/.env' });
 // Middleware
 server.use(express.json());
-server.use(cors())
+server.use(cors({origin:"*"}))
 // Routes
 server.use('/api', routes);
 
