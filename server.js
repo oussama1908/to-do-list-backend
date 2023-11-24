@@ -14,9 +14,13 @@ server.use(express.json());
 server.use('/api', routes);
 
 // Error handling middleware
-server.use((err, req, res, next) => {
+server.use(function(err, req, res, next)  {
+  res.header ("Access-Control-Allow-Origin","*");
+  res.header ("Access-Control-Allow-Methods","GET,HEAD,OPTIONS,POST,PUT,DELETE");
+  res.header ("Access-Control-Allow-Headers","x-Requested-with,Content-Type,Accept,Authorization");
+
+    next();
   console.error(err);
-  res.status(500).json({ error: 'Internal Server Error' });
 });
 
 // connection with mongoose atlas
