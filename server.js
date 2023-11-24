@@ -4,11 +4,12 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const routes = require('./routes/user'); 
 const cors=require('cors');
+server.use(cors())
+
 // const DB_URL="mongodb://127.0.0.1:27017/admin"
 dotenv.config({ path: './config/.env' });
 // Middleware
 server.use(express.json());
-server.use(cors({origin:"*"}))
 // Routes
 server.use('/api', routes);
 
